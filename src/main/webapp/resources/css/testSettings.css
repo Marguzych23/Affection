@@ -1,0 +1,183 @@
+#passed, #unpassed, #new, #popular {
+    display: none;
+}
+
+/*<---------Settings parameters----------*/
+
+.settings-content {
+    align-content: center;
+    text-align: center;
+    padding: 1.5em;
+    margin: 2em 1em;
+    background-color: white;
+    border-radius: 2em;
+    -webkit-box-shadow: 0 1px 2px rgba(88, 118, 124, .6);
+    box-shadow: 0 1px 2px rgba(88, 118, 124, .6);
+}
+
+.tests-categories {
+    padding: 1em 2em;
+    height: 9em;
+}
+
+.teachers, .friends, .data-submit {
+    display: none;
+}
+
+.settings-button {
+    padding: 15px 35px;
+    background: #7cc576;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    border-radius: 3px;
+    text-transform: uppercase;
+    line-height: 25px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+.agents, .friends {
+    height: 11em;
+}
+
+/*--------------------------------->*/
+/*<---------Agents and teacher parameters----------*/
+
+.funky-radio div {
+    clear: both;
+    overflow: hidden;
+}
+
+.funky-radio label {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #D1D3D4;
+    font-weight: normal;
+}
+
+.funky-radio input[type="radio"]:empty,
+.funky-radio input[type="checkbox"]:empty {
+    display: none;
+}
+
+.funky-radio input[type="radio"]:empty ~ label,
+.funky-radio input[type="checkbox"]:empty ~ label {
+    position: relative;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.funky-radio input[type="radio"]:empty ~ label:before,
+.funky-radio input[type="checkbox"]:empty ~ label:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 2.5em;
+    background: #D1D3D4;
+    border-radius: 3px 0 0 3px;
+}
+
+.funky-radio input[type="radio"]:hover:not(:checked) ~ label,
+.funky-radio input[type="checkbox"]:hover:not(:checked) ~ label {
+    color: #9d9d9d;
+}
+
+.funky-radio input[type="radio"]:hover:not(:checked) ~ label:before,
+.funky-radio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+    content: '\2714';
+    text-indent: .9em;
+    color: #C2C2C2;
+}
+
+.funky-radio input[type="radio"]:checked ~ label,
+.funky-radio input[type="checkbox"]:checked ~ label {
+    color: #9d9d9d;
+}
+
+.funky-radio input[type="radio"]:checked ~ label:before,
+.funky-radio input[type="checkbox"]:checked ~ label:before {
+    content: '\2714';
+    text-indent: .9em;
+    color: #333;
+    background-color: #ccc;
+}
+
+.funky-radio input[type="radio"]:focus ~ label:before,
+.funky-radio input[type="checkbox"]:focus ~ label:before {
+    box-shadow: 0 0 0 3px #9d9d9d;
+}
+
+.funky-radio-success input[type="radio"]:checked ~ label:before,
+.funky-radio-success input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color:  #7cc576;
+}
+
+/*--------------------------------->*/
+/*<---------Friend parameters----------*/
+
+.cc-selector input {
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+.cc-selector input:active + .friend-cc {
+    opacity: .9;
+}
+
+.cc-selector input:checked + .friend-cc {
+    -webkit-filter: none;
+    -moz-filter: none;
+    filter: none;
+}
+
+.friend-cc {
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 10em;
+    height: 10em;
+    -webkit-transition: all 100ms ease-in;
+    -moz-transition: all 100ms ease-in;
+    transition: all 100ms ease-in;
+    -webkit-filter: brightness(1) grayscale(1) opacity(.7);
+    -moz-filter: brightness(1) grayscale(1) opacity(.7);
+    filter: brightness(1) grayscale(1) opacity(.7);
+}
+
+.friend-cc:hover {
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+.girl {
+    background-image: url('../../resources/img/friend1/pleasant.jpg');
+}
+
+.boy {
+    background-image: url('../../resources/img/friend2/pleasant.jpg');
+}
+
+.friends img {
+    width: 100%;
+    height: 100%;
+}

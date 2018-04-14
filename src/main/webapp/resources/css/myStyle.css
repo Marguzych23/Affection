@@ -1,0 +1,142 @@
+body {
+    width: 100%;
+}
+
+/*<-------------Navigation bar--------------*/
+
+.navbar {
+    position: inherit;
+    background-color: #222222;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.selected {
+    color: #ffffff;
+}
+
+/*--------------------------------->*/
+/*<-------------Agents--------------*/
+
+.agents {
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.agent {
+    height: 15em;
+}
+
+.off-agent {
+    display: none;
+}
+
+/*--------------------------------->*/
+/*<--------------Test---------------*/
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.question {
+    font-size: 3em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+.button {
+    padding-top: 2em;
+}
+
+.continue {
+    padding: 15px 35px;
+    background: #7cc576;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    border-radius: 3px;
+    text-transform: uppercase;
+    line-height: 25px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+.floating-label-form-group {
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #eee;
+}
+
+.floating-label-form-group input {
+    z-index: 1;
+    position: relative;
+    padding-right: 0;
+    padding-left: 0;
+    border: none;
+    border-radius: 0;
+    font-size: 1.5em;
+    background: 0 0;
+    box-shadow: none !important;
+    resize: none
+}
+
+form .floating-label-form-group {
+    border-top: 1px solid #eee
+}
+
+/*--------------------------------->*/
+/*<-------------Rebirth and Error--------------*/
+
+.congratulation {
+    display: none;
+}
+
+.rebirth-button {
+    padding: 15px 35px;
+    background: #7cc576;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    border-radius: 3px;
+    text-transform: uppercase;
+    line-height: 25px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+.congratulation, .error-text {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    text-align: center;
+}
+
+.big-text {
+    padding-top: 2em;
+    text-align: center;
+    font-size: 5em;
+}
+
+.error-text {
+    padding-top: 2em;
+}
