@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface TestDetailRepository extends JpaRepository<TestDetail, Long> {
 
-    List<TestDetail> getTestDetailsByTest_id(Long test_id);
+    List<TestDetail> getTestDetailsByTestId(Long testId);
 
 }

@@ -1,4 +1,4 @@
-package ru.itis.affection.services.implementations;
+package ru.itis.affection.services.impl;
 
 import org.springframework.stereotype.Service;
 import ru.itis.affection.models.User;
@@ -6,10 +6,10 @@ import ru.itis.affection.repositories.UserRepository;
 import ru.itis.affection.services.UserService;
 
 @Service
-public class UserServiceImplementation implements UserService {
+public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
-    public UserServiceImplementation(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

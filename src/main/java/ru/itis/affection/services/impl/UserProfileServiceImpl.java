@@ -1,4 +1,4 @@
-package ru.itis.affection.services.implementations;
+package ru.itis.affection.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,12 +10,12 @@ import ru.itis.affection.services.UserProfileService;
 import java.util.List;
 
 @Service
-public class UserProfileServiceImplementation implements UserProfileService {
+public class UserProfileServiceImpl implements UserProfileService {
 
     @Autowired
     private UserTestRepository userTestRepository;
 
-    public UserProfileServiceImplementation(UserTestRepository userTestRepository) {
+    public UserProfileServiceImpl(UserTestRepository userTestRepository) {
         this.userTestRepository = userTestRepository;
     }
 

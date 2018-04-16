@@ -1,4 +1,4 @@
-package ru.itis.affection.services.implementations;
+package ru.itis.affection.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class TestServiceImplementation implements TestService {
+public class TestServiceImpl implements TestService {
 
     private final Integer PASSED_TEST_PERCENT = 100;
     private final Integer NOT_PASSED_TEST_PERCENT = 60;
@@ -30,7 +30,7 @@ public class TestServiceImplementation implements TestService {
     private TestDetailRepository testDetailRepository;
 
     @Autowired
-    public TestServiceImplementation(TestRepository testRepository, UserTestRepository userTestRepository, TestDetailRepository testDetailRepository) {
+    public TestServiceImpl(TestRepository testRepository, UserTestRepository userTestRepository, TestDetailRepository testDetailRepository) {
         this.testRepository = testRepository;
         this.userTestRepository = userTestRepository;
         this.testDetailRepository = testDetailRepository;
@@ -105,11 +105,10 @@ public class TestServiceImplementation implements TestService {
     @Override
     public TestDto getTest(String name) {
         Test test = testRepository.findByName(name);
-        List<TestDetail> testDetails = testDetailRepository.getTestDetailsByTest_id(test.getId());
 
         return TestDto.builder()
                 .name(test.getName())
-                .testDetailsDto(convertTestDetailListToDtoList(testDetails))
+                .testDetailsDto(convertTestDetailListToDtoList(test.getTestDetails()))
                 .build();
     }
 

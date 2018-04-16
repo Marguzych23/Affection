@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ru.itis.affection.forms.UserForm;
 import ru.itis.affection.models.User;
 import ru.itis.affection.services.UserProfileService;
@@ -31,7 +28,7 @@ public class ProfileController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String doGet(
             ModelMap modelMap,
             HttpSession httpSession
@@ -49,7 +46,7 @@ public class ProfileController {
         return "profile";
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @PostMapping
     @ResponseBody
     public String getDetails(
             HttpSession httpSession
@@ -59,7 +56,7 @@ public class ProfileController {
         return userProfileService.getUserTestDetails(user.getId()).toString();
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/edit")
+    @PostMapping("/edit")
     public String editUser(
             HttpSession httpSession,
             @Valid @ModelAttribute(name = "userForm") UserForm userForm,

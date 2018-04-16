@@ -1,14 +1,13 @@
 package ru.itis.affection.config;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -29,14 +28,27 @@ public class DBConfig {
     @Resource
     private Environment env;
 
+    @Value("${db.driver}")
+    private String databaseDriver;
+
+    @Value("${db.url}")
+    private String databaseURL;
+
+    @Value("${db.username}")
+    private String databaseUsername;
+
+    @Value("${db.password}")
+    private String databasePassword;
+
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-        dataSource.setDriverClassName(env.getRequiredProperty("db.driver"));
-        dataSource.setUrl(env.getRequiredProperty("db.url"));
-        dataSource.setUsername(env.getRequiredProperty("db.username"));
-        dataSource.setPassword(env.getRequiredProperty("db.password"));
+        dataSource.setDriverClassName(databaseDriver);
+        dataSource.setUrl(databaseURL);
+        dataSource.setUsername(databaseUsername);
+        dataSource.setPassword(databasePassword);
 
         return dataSource;
     }

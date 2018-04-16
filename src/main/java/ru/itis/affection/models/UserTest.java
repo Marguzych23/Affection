@@ -27,15 +27,11 @@ public class UserTest {
     @JoinColumn(name = "test_id", referencedColumnName = "test_id")
     private Test test;
 
-    @Column(name = "teacher_type")
     private String teacherType;
 
-    @Column(name = "friend_type")
     private String friendType;
 
-    @Column(name = "user_test_percent")
     private Integer percent;
 
-    @Column(name = "user_test_date")
     private Date date;
 }

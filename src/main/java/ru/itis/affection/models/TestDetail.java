@@ -20,11 +20,15 @@ public class TestDetail {
 
     @Column(name = "test_id")
     @ManyToOne(targetEntity = Test.class)
-    private Long test_id;
+    private Long testId;
 
     @Column(name = "test_detail_question")
     private String question;
 
     @Column(name = "test_detail_answer")
     private String answer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "test_id")
+    private Test test;
 }

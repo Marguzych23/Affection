@@ -1,4 +1,4 @@
-package ru.itis.affection.services.implementations;
+package ru.itis.affection.services.impl;
 
 public class AgentImgFactory {
 

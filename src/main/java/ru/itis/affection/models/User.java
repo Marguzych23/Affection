@@ -19,18 +19,15 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "login")
+    @Column(unique = true)
     private String login;
 
-    @Column(name = "email")
+    @Column(unique = true)
     private String email;
 
-    @Column(name = "password")
     private String password;
 
-    @Column(name = "birthday")
     private Date birthday;
 
-    @Column(name = "sex")
     private Boolean sex;
 }

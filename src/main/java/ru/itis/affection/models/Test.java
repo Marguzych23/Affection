@@ -1,21 +1,20 @@
 package ru.itis.affection.models;
 
-import com.sun.javafx.beans.IDProperty;
 import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
+@Entity
 @Table(name = "test")
 public class Test {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToMany(targetEntity = TestDetail.class, cascade = CascadeType.ALL)
-    @Column(name = "test_detail_id")
     private Long id;
 
     @Column(name = "test_name")
@@ -23,4 +22,7 @@ public class Test {
 
     @Column(name = "test_popularity")
     private Integer popularity;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "test")
+    private List<TestDetail> testDetails;
 }
