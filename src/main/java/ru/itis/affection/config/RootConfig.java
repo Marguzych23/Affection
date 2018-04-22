@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import({DBConfig.class})
-@ComponentScan(basePackages = {"ru.itis.affection.services", "ru.itis.affection.services.impl"})
+@ComponentScan("ru.itis.affection")
 public class RootConfig {
 
 }
