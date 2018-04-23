@@ -35,6 +35,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/profile").setViewName("profile");
         registry.addViewController("/home").setViewName("welcome");
         registry.addViewController("/tests").setViewName("tests");
+        registry.addViewController("/error").setViewName("/exceptions/exceptionWithInfo");
     }
 
     @Bean

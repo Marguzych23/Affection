@@ -25,7 +25,7 @@ public class ExceptionHandlerController {
         ModelAndView mav = new ModelAndView();
         mav.addObject("exception", exception);
         mav.addObject("url", req.getRequestURL());
-        mav.setViewName("exceptionViewWithInfo");
+        mav.setViewName("exceptions/exceptionWithInfo");
         return mav;
     }
 

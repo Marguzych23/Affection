@@ -8,5 +8,4 @@ import org.springframework.context.annotation.Import;
 @Import({DBConfig.class})
 @ComponentScan("ru.itis.affection")
 public class RootConfig {
-
 }
