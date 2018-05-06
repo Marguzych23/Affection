@@ -24,6 +24,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     public List<UserTestDetailDto> getUserTestDetails(Long userId) {
-        return userTestRepository.getTestDetailsForAllPassedTestByUserId(userId);
+//        return userTestRepository.getTestDetailsForAllPassedTestByUserId(userId);
+        return null;
     }
 }

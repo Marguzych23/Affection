@@ -12,14 +12,27 @@ import ru.itis.affection.models.User;
 @Controller
 @RequestMapping("/")
 public class IndexController {
+//
+//    @PostMapping("/login")
+//    public String login() {
+//        return "profile";
+//    }
+//
+//    @GetMapping("/logout")
+//    public String logout() {
+//        return "welcome";
+//    }
 
-    @PostMapping("/login")
-    public String login() {
-        return "profile";
+    @GetMapping("/home")
+    public String index(ModelMap modelMap) {
+        modelMap.addAttribute("userForm", new UserForm());
+        modelMap.addAttribute("user", new User());
+        return "welcome";
     }
 
-    @GetMapping("/logout")
-    public String logout() {
-        return "welcome";
+    @PostMapping("/signup")
+    public String signUp() {
+
+        return "redirect::/tests";
     }
 }

@@ -26,7 +26,7 @@
 
         <!-- Spring -->
         <spring-data-jpa.version>1.11.1.RELEASE</spring-data-jpa.version>
-        <spring.version>4.3.14.RELEASE</spring.version>
+        <spring.version>5.0.4.RELEASE</spring.version>
         <spring-security.version>5.0.4.RELEASE</spring-security.version>
 
         <!-- Java EE / Java SE dependencies -->
@@ -94,6 +94,11 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
             <version>${spring-security.version}</version>
         </dependency>
 
@@ -177,22 +182,6 @@
             <artifactId>gson</artifactId>
             <version>2.8.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>1.11.1.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>1.11.1.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>1.11.1.RELEASE</version>
-        </dependency>
-
 
         <!-- Log -->
         <dependency>

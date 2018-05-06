@@ -89,13 +89,13 @@
                                 <div class="text-danger">* ${error}</div>
                             </c:forEach>
                             <div class="inner-form">
-                                <form class="sa-innate-form" method="post" action="<c:url value="/login"/>">
+                                <form:form class="sa-innate-form" method="post" action="/login" commandName="user">
                                     <form:label path="signin-username-field">Логин:</form:label>
-                                    <form:input path="signin-username-field" type="text" name="signin-login">
+                                    <form:input path="signin-username-field" type="text" name="signin-login"/>
                                     <form:label path="signin-password-field">Пароль:</form:label>
-                                    <form:input path="signin-password-field" type="password" name="signin-password">
+                                    <form:input path="signin-password-field" type="password" name="signin-password"/>
                                     <button type="submit" class="signin">Войти</button>
-                                </form>
+                                </form:form>
                             </div>
                         </div>
                         <div id="signup" class="tab-pane fade">
@@ -104,24 +104,24 @@
                                 <div class="text-danger">* ${error}</div>
                             </c:forEach>
                             <div class="inner-form">
-                                <form class="sa-innate-form" method="post" action="<c:url value="/login"/>">
+                                <form:form class="sa-innate-form" method="post" action="/signup" commandName="user">
                                     <form:label path="signup-email">Email:</form:label>
-                                    <form:input path="signup-email" type="text" name="signup-email">
+                                    <form:input path="signup-email" type="text" name="signup-email"/>
                                     <form:label path="signup-username">Логин:</form:label>
-                                    <form:input path="signup-username" type="text" name="signup-login">
+                                    <form:input path="signup-username" type="text" name="signup-login"/>
                                     <form:label path="signup-password">Пароль:</form:label>
-                                    <form:input path="signup-password" type="password" name="signup-password">
+                                    <form:input path="signup-password" type="password" name="signup-password"/>
                                     <form:label path="signup-password-repeat">Пароль:</form:label>
-                                    <form:input path="signup-password-repeat" type="password" name="signup-password-repeat">
+                                    <form:input path="signup-password-repeat" type="password" name="signup-password-repeat"/>
                                     <form:label path="signup-birthday">Дата рождения:</form:label><br>
-                                    <form:input path="signup-birthday" type="date" name="signup-birthday"><br>
+                                    <form:input path="signup-birthday" type="date" name="signup-birthday"/><br>
                                     <form:label path="signup-sex">Пол:</form:label>
                                     <form:select cssClass="select2" path="signup-sex">
                                         <form:option value="1">Женский</form:option>
                                         <form:option value="0">Мужской</form:option>
                                     </form:select>
                                     <button type="submit" class="signup">Зарегистрироваться</button>
-                                </form>
+                                </form:form>
                             </div>
                         </div>
                     </div>

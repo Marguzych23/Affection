@@ -12,9 +12,8 @@ public interface UserTestRepository extends JpaRepository<UserTest, Long> {
 
     List<UserTest> getAllLastByUserId(Long id);
 
-    List<UserTestDetailDto> getTestDetailsForAllPassedTestByUserId(Long id);
+    List<UserTest> getTestDetailsForAllPassedTestByUserId(Long id);
 
 //    List<UserTest> get
 
-    UserTest save(UserTest userTest);
 }

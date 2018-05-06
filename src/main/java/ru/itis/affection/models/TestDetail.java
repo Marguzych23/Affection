@@ -20,10 +20,6 @@ public class TestDetail {
     @Column(name = "test_detail_id")
     private Long id;
 
-    @Column(name = "test_id")
-    @ManyToOne(targetEntity = Test.class)
-    private Long testId;
-
     @Column(name = "test_detail_question")
     private String question;
 
