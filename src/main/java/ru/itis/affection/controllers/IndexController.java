@@ -14,15 +14,12 @@ import ru.itis.affection.models.User;
 public class IndexController {
 
     @PostMapping("/login")
-    public String login(ModelMap modelMap, @ModelAttribute("userForm")UserForm loginForm) {
-        //loginForm checking TODO
-        
+    public String login() {
         return "profile";
     }
 
     @GetMapping("/logout")
-    public String logout(ModelMap modelMap) {
-        //logout from session TODO
+    public String logout() {
         return "welcome";
     }
 }

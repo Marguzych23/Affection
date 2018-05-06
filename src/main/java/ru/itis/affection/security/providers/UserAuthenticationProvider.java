@@ -1,4 +1,4 @@
-package ru.itis.affection.security.security.providers;
+package ru.itis.affection.security.providers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

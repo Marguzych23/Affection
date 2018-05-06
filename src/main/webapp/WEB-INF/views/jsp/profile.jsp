@@ -1,8 +1,9 @@
-<%--@elvariable id="userTests" type="java.util.List<models.UserTest>"--%>
-<%--@elvariable id="userProfile" type="models.User"--%>
+<%--@elvariable id="userTests" type="java.util.List<ru.itis.affection.models.UserTest>"--%>
+<%--@elvariable id="userProfile" type="ru.itis.affection.forms.UserForm"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix= "security" uri= "http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,49 +112,47 @@
             </div>
 
             <div class="row auth-form">
-                <form class="col-md-12 user required-fields" id="user-form" action="/affection/profile" method="POST">
-                    <%--@elvariable id="editUserErrors" type="java.util.List"--%>
-                    <c:forEach items="${editUserErrors}" var="error">
-                        <div class="text-danger">* ${error}</div>
-                    </c:forEach>
+                <form:form method="post" cssClass="col-md-12 user required-fields" id="user-form"
+                           action="/profile">
+
                     <div class="row">
 
                         <div class="offset-md-3 col-md-6">
                             <div class="form-group floating-label-form-group">
-                                <label for="nickname">Имя</label>
-                                <input type="text" class=" form-control" placeholder="Nickname"
-                                       name="name"
-                                       id="nickname" tabindex="0">
+                                <form:label path="nickname">Имя</form:label>
+                                <form:input cssClass="form-control" placeholder="Nickname"
+                                            path="name"
+                                            id="nickname" tabindex="0"/>
                             </div>
                         </div>
 
 
                         <div class="offset-md-3 col-md-6">
                             <div class="form-group floating-label-form-group">
-                                <label for="new-password">Новый пароль</label>
-                                <input type="password" class="form-control" placeholder="Новый пароль"
-                                       name="new-password"
-                                       id="new-password" tabindex="0">
+                                <form:label path="new-password">Новый пароль</form:label>
+                                <form:password cssClass="form-control"
+                                               placeholder="Новый пароль"
+                                               path="new-password" tabindex="0"/>
                             </div>
                         </div>
 
                         <div class="offset-md-3 col-md-6">
                             <div class="form-group floating-label-form-group">
-                                <label for="repeat-new-password">Новый пароль</label>
-                                <input type="password" class="form-control"
-                                       placeholder="Повторите пароль" name="repeat-new-password"
-                                       id="repeat-new-password" tabindex="0">
+                                <form:label path="repeat-new-password">Новый пароль</form:label>
+                                <form:password cssClass="form-control"
+                                               placeholder="Повторите пароль"
+                                               path="repeat-new-password" tabindex="0"/>
                             </div>
                         </div>
 
-                        <%--<div class="offset-md-3 col-md-6">--%>
-                        <%--<div class="required_field form-group floating-label-form-group">--%>
-                        <%--<label for="age">Возраст</label>--%>
-                        <%--<input type="date" class="age required-field form-control" placeholder="Дата рождения"--%>
-                        <%--name="age" id="age"--%>
-                        <%--tabindex="0">--%>
-                        <%--</div>--%>
-                        <%--</div>--%>
+                            <%--<div class="offset-md-3 col-md-6">--%>
+                            <%--<div class="required_field form-group floating-label-form-group">--%>
+                            <%--<label path="age">Возраст</label>--%>
+                            <%--<input type="date" class="age required-field form-control" placeholder="Дата рождения"--%>
+                            <%--name="age" id="age"--%>
+                            <%--tabindex="0">--%>
+                            <%--</div>--%>
+                            <%--</div>--%>
 
                         <div class="offset-md-3 col-md-6">
                             <div class="form-group">
@@ -164,7 +163,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                </form:form>
             </div>
         </div>
 

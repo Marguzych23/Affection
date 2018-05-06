@@ -1,7 +1,6 @@
-package ru.itis.affection.security.security.config;
+package ru.itis.affection.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -26,15 +25,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final DataSource dataSource;
 
     @Autowired
-    public WebSecurityConfig(UserDetailsService userDetailsService, AuthenticationProvider authenticationProvider,
-                             @Qualifier("dataSource") DataSource dataSource) {
+    public WebSecurityConfig(UserDetailsService userDetailsService, AuthenticationProvider authenticationProvider, DataSource dataSource) {
         this.userDetailsService = userDetailsService;
         this.authenticationProvider = authenticationProvider;
         this.dataSource = dataSource;
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
                 .antMatchers("/**").permitAll()
@@ -47,12 +45,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/login")
                 .usernameParameter("login")
                 .defaultSuccessUrl("/tests")
-                .failureUrl("/login?error")
+                .failureUrl("/login")
                 .permitAll()
             .and()
                 .logout()
                 .logoutUrl("/logout")
-                .deleteCookies("remember-me")
                 .logoutSuccessUrl("/login")
                 .permitAll()
             .and()
@@ -61,10 +58,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
 
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
@@ -74,7 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(this.userDetailsService);
         auth.authenticationProvider(this.authenticationProvider);
     }

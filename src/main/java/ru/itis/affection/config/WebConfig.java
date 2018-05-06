@@ -3,7 +3,6 @@ package ru.itis.affection.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -35,7 +34,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/profile").setViewName("profile");
         registry.addViewController("/home").setViewName("welcome");
         registry.addViewController("/tests").setViewName("tests");
-        registry.addViewController("/error").setViewName("/exceptions/exceptionWithInfo");
+        registry.addViewController("/error").setViewName("/exceptions/exceptionViewWithInfo");
     }
 
     @Bean
@@ -73,7 +72,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeInterceptor());
     }
-
 
 }
 

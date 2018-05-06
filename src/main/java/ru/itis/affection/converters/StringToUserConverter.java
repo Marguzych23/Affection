@@ -20,7 +20,7 @@ public class StringToUserConverter implements Converter<String, User> {
     @Override
     public User convert(String s) {
 
-        if (s.equals("")) {
+        if (s.isEmpty()) {
             return null;
         }
 

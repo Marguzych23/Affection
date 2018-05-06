@@ -1,9 +1,10 @@
-package ru.itis.affection.security.security.details;
+package ru.itis.affection.security.details;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import ru.itis.affection.dto.UserTestDetailDto;
 import ru.itis.affection.models.User;
 
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.Collections;
 public class UserDetailsImpl implements UserDetails {
 
     private User user;
+    private UserTestDetailDto userTestDetailDto;
 
     private UserDetailsImpl() {
     }
@@ -61,5 +63,13 @@ public class UserDetailsImpl implements UserDetails {
 
     public User getUser() {
         return this.user;
+    }
+
+    public UserTestDetailDto getUserTestDetailDto() {
+        return userTestDetailDto;
+    }
+
+    public void setUserTestDetailDto(UserTestDetailDto userTestDetailDto) {
+        this.userTestDetailDto = userTestDetailDto;
     }
 }

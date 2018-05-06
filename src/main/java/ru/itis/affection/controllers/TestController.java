@@ -2,6 +2,7 @@ package ru.itis.affection.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import ru.itis.affection.dto.TestQuestionDto;
 import ru.itis.affection.dto.UserTestDetailDto;
 import ru.itis.affection.mapper.TestMapper;
 import ru.itis.affection.models.User;
+import ru.itis.affection.security.details.UserDetailsImpl;
 import ru.itis.affection.services.TestService;
 
 import javax.servlet.http.HttpSession;
@@ -26,8 +28,7 @@ public class TestController {
             ModelMap modelMap,
             @RequestParam(name = "test-name") String testName,
             @RequestParam(name = "test-teacher") String teacherType,
-            @RequestParam(name = "test-friend") String friendType
-    ) {
+            @RequestParam(name = "test-friend") String friendType) {
 
         User user = (User) httpSession.getAttribute("user");
 
@@ -45,8 +46,10 @@ public class TestController {
     public String doPost(
             HttpSession httpSession,
             @RequestParam(name = "answer") String answer,
-            TestMapper testMapper
+            TestMapper testMapper,
+            Authentication authentication
     ) {
+        UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
         UserTestDetailDto userTestDetailDto = (UserTestDetailDto) httpSession.getAttribute("userTestDetail");
 
         userTestDetailDto = testService.checkUserAnswer(userTestDetailDto, answer.trim());

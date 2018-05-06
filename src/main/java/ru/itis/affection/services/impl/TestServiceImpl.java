@@ -10,7 +10,6 @@ import ru.itis.affection.models.Test;
 import ru.itis.affection.models.TestDetail;
 import ru.itis.affection.models.User;
 import ru.itis.affection.models.UserTest;
-import ru.itis.affection.repositories.TestDetailRepository;
 import ru.itis.affection.repositories.TestRepository;
 import ru.itis.affection.repositories.UserTestRepository;
 import ru.itis.affection.services.TestService;
@@ -27,13 +26,11 @@ public class TestServiceImpl implements TestService {
 
     private TestRepository testRepository;
     private UserTestRepository userTestRepository;
-    private TestDetailRepository testDetailRepository;
 
     @Autowired
-    public TestServiceImpl(TestRepository testRepository, UserTestRepository userTestRepository, TestDetailRepository testDetailRepository) {
+    public TestServiceImpl(TestRepository testRepository, UserTestRepository userTestRepository) {
         this.testRepository = testRepository;
         this.userTestRepository = userTestRepository;
-        this.testDetailRepository = testDetailRepository;
     }
 
     @Override

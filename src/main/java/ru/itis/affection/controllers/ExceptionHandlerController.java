@@ -15,7 +15,7 @@ public class ExceptionHandlerController {
     @ExceptionHandler()
     public void standard() {}
 
-    @ExceptionHandler({})
+    @ExceptionHandler()
     public String simpleView() {
         return "staticExceptionView";
     }

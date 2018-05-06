@@ -1,6 +1,7 @@
 package ru.itis.affection.services.impl;
 
 import org.springframework.stereotype.Service;
+import ru.itis.affection.forms.UserForm;
 import ru.itis.affection.models.User;
 import ru.itis.affection.repositories.UserRepository;
 import ru.itis.affection.services.UserService;
@@ -41,6 +42,21 @@ public class UserServiceImpl implements UserService {
 
     public User getUser(Long id) {
         return userRepository.findById(id);
+    }
+
+    public User getUser(String login) {
+        return userRepository.findByLogin(login);
+    }
+
+    public UserForm getUserForm(Long id) {
+        User user = userRepository.findById(id);
+        return UserForm.builder()
+                .email(user.getEmail())
+                .login(user.getLogin())
+                .password(user.getPassword())
+                .birthday(user.getBirthday())
+                .sex(user.getSex())
+                .build();
     }
 
 }

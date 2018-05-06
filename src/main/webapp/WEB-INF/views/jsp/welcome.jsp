@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -89,10 +90,10 @@
                             </c:forEach>
                             <div class="inner-form">
                                 <form class="sa-innate-form" method="post" action="<c:url value="/login"/>">
-                                    <label for="signin-username-field">Логин:</label>
-                                    <input id="signin-username-field" type="text" name="signin-login">
-                                    <label for="signin-password-field">Пароль:</label>
-                                    <input id="signin-password-field" type="password" name="signin-password">
+                                    <form:label path="signin-username-field">Логин:</form:label>
+                                    <form:input path="signin-username-field" type="text" name="signin-login">
+                                    <form:label path="signin-password-field">Пароль:</form:label>
+                                    <form:input path="signin-password-field" type="password" name="signin-password">
                                     <button type="submit" class="signin">Войти</button>
                                 </form>
                             </div>
@@ -103,22 +104,22 @@
                                 <div class="text-danger">* ${error}</div>
                             </c:forEach>
                             <div class="inner-form">
-                                <form class="sa-innate-form" method="post" action="<c:url value="/signup"/>">
-                                    <label for="signup-email">Email:</label>
-                                    <input id="signup-email" type="text" name="signup-email">
-                                    <label for="signup-username">Логин:</label>
-                                    <input id="signup-username" type="text" name="signup-login">
-                                    <label for="signup-password">Пароль:</label>
-                                    <input id="signup-password" type="password" name="signup-password">
-                                    <label for="signup-password-repeat">Пароль:</label>
-                                    <input id="signup-password-repeat" type="password" name="signup-password-repeat">
-                                    <label for="signup-birthday">Дата рождения:</label><br>
-                                    <input id="signup-birthday" type="date" name="signup-birthday"><br>
-                                    <label for="signup-sex">Пол:</label>
-                                    <select class="select2" id="signup-sex" name="signup-sex">
-                                        <option value="1">Женский</option>
-                                        <option value="0">Мужской</option>
-                                    </select>
+                                <form class="sa-innate-form" method="post" action="<c:url value="/login"/>">
+                                    <form:label path="signup-email">Email:</form:label>
+                                    <form:input path="signup-email" type="text" name="signup-email">
+                                    <form:label path="signup-username">Логин:</form:label>
+                                    <form:input path="signup-username" type="text" name="signup-login">
+                                    <form:label path="signup-password">Пароль:</form:label>
+                                    <form:input path="signup-password" type="password" name="signup-password">
+                                    <form:label path="signup-password-repeat">Пароль:</form:label>
+                                    <form:input path="signup-password-repeat" type="password" name="signup-password-repeat">
+                                    <form:label path="signup-birthday">Дата рождения:</form:label><br>
+                                    <form:input path="signup-birthday" type="date" name="signup-birthday"><br>
+                                    <form:label path="signup-sex">Пол:</form:label>
+                                    <form:select cssClass="select2" path="signup-sex">
+                                        <form:option value="1">Женский</form:option>
+                                        <form:option value="0">Мужской</form:option>
+                                    </form:select>
                                     <button type="submit" class="signup">Зарегистрироваться</button>
                                 </form>
                             </div>
