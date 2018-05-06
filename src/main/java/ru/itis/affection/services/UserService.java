@@ -3,6 +3,8 @@ package ru.itis.affection.services;
 import org.springframework.stereotype.Service;
 import ru.itis.affection.models.User;
 
+import java.util.List;
+
 @Service
 public interface UserService {
 
@@ -15,4 +17,6 @@ public interface UserService {
     void editUserData(User user);
 
     User getUser(Long id);
+
+    List<User> getAll();
 }

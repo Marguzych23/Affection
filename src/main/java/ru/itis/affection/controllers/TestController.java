@@ -23,38 +23,36 @@ public class TestController {
     private TestService testService;
 
     @GetMapping
-    public String getTest(
-            HttpSession httpSession,
-            ModelMap modelMap,
+    public String getTest(ModelMap modelMap,
             @RequestParam(name = "test-name") String testName,
             @RequestParam(name = "test-teacher") String teacherType,
-            @RequestParam(name = "test-friend") String friendType) {
-
-        User user = (User) httpSession.getAttribute("user");
+            @RequestParam(name = "test-friend") String friendType,
+            Authentication authentication) {
+        UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+        User user = details.getUser();
 
         UserTestDetailDto userTestDetailDto = testService.getUserTest(testName, user, teacherType, friendType);
         TestQuestionDto testQuestionDto = testService.getTestQuestionDto(userTestDetailDto);
 
         modelMap.addAttribute("testQuestion", testQuestionDto);
-        httpSession.setAttribute("userTestDetail", userTestDetailDto);
+        details.setUserTestDetailDto(userTestDetailDto);
 
         return "test";
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String doPost(
-            HttpSession httpSession,
-            @RequestParam(name = "answer") String answer,
+    public String doPost(@RequestParam(name = "answer") String answer,
             TestMapper testMapper,
             Authentication authentication
     ) {
         UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
-        UserTestDetailDto userTestDetailDto = (UserTestDetailDto) httpSession.getAttribute("userTestDetail");
+        UserTestDetailDto userTestDetailDto = details.getUserTestDetailDto();
+
 
         userTestDetailDto = testService.checkUserAnswer(userTestDetailDto, answer.trim());
 
-        httpSession.setAttribute("userTestDetail", userTestDetailDto);
+        details.setUserTestDetailDto(userTestDetailDto);
 
 
         TestQuestionDto testQuestionDto = testService.getTestQuestionDto(userTestDetailDto);

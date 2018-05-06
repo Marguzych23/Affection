@@ -6,6 +6,8 @@ import ru.itis.affection.models.User;
 import ru.itis.affection.repositories.UserRepository;
 import ru.itis.affection.services.UserService;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
@@ -37,11 +39,16 @@ public class UserServiceImpl implements UserService {
         User model = userRepository.findById(user.getId());
         model.setLogin(user.getLogin().toLowerCase());
         model.setPassword(user.getPassword());
-        userRepository.update(model);
+        userRepository.save(model);
     }
 
     public User getUser(Long id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 
     public User getUser(String login) {

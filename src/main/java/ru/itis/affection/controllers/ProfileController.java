@@ -1,12 +1,14 @@
 package ru.itis.affection.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.affection.forms.UserForm;
 import ru.itis.affection.models.User;
+import ru.itis.affection.security.details.UserDetailsImpl;
 import ru.itis.affection.services.UserProfileService;
 import ru.itis.affection.services.UserService;
 
@@ -29,11 +31,11 @@ public class ProfileController {
 
 
     @GetMapping
-    public String doGet(
-            ModelMap modelMap,
-            HttpSession httpSession
-    ) {
-        User user = (User) httpSession.getAttribute("user");
+    public String doGet(ModelMap modelMap,
+            Authentication authentication) {
+        UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+
+        User user = details.getUser();
 
 //
 //        if (req.getParameter("details") != null) {
@@ -49,20 +51,19 @@ public class ProfileController {
     @PostMapping
     @ResponseBody
     public String getDetails(
-            HttpSession httpSession
+            Authentication authentication
     ) {
 //        todo
-        User user = (User) httpSession.getAttribute("user");
+        UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+        User user = details.getUser();
         return userProfileService.getUserTestDetails(user.getId()).toString();
     }
 
     @PostMapping("/edit")
-    public String editUser(
-            HttpSession httpSession,
-            @Valid @ModelAttribute(name = "userForm") UserForm userForm,
-            BindingResult result
-    ) {
-        User user = (User) httpSession.getAttribute("user");
+    public String editUser(Authentication authentication, @Valid @ModelAttribute(name = "userForm") UserForm userForm,
+                           BindingResult result) {
+        UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+        User user = details.getUser();
 
         String passwordRepeat = userForm.getRepeatPassword();
 

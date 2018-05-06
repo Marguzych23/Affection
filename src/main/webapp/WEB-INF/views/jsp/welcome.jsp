@@ -89,11 +89,11 @@
                                 <div class="text-danger">* ${error}</div>
                             </c:forEach>
                             <div class="inner-form">
-                                <form:form class="sa-innate-form" method="post" action="/login" commandName="user">
-                                    <form:label path="signin-username-field">Логин:</form:label>
-                                    <form:input path="signin-username-field" type="text" name="signin-login"/>
-                                    <form:label path="signin-password-field">Пароль:</form:label>
-                                    <form:input path="signin-password-field" type="password" name="signin-password"/>
+                                <form:form class="sa-innate-form" method="post" action="/login" modelAttribute="user">
+                                    <form:label path="login">Логин:</form:label>
+                                    <form:input path="login" type="text" name="signin-login"/>
+                                    <form:label path="password">Пароль:</form:label>
+                                    <form:input path="password" type="password" name="password"/>
                                     <button type="submit" class="signin">Войти</button>
                                 </form:form>
                             </div>
@@ -104,19 +104,19 @@
                                 <div class="text-danger">* ${error}</div>
                             </c:forEach>
                             <div class="inner-form">
-                                <form:form class="sa-innate-form" method="post" action="/signup" commandName="user">
-                                    <form:label path="signup-email">Email:</form:label>
-                                    <form:input path="signup-email" type="text" name="signup-email"/>
-                                    <form:label path="signup-username">Логин:</form:label>
-                                    <form:input path="signup-username" type="text" name="signup-login"/>
-                                    <form:label path="signup-password">Пароль:</form:label>
-                                    <form:input path="signup-password" type="password" name="signup-password"/>
-                                    <form:label path="signup-password-repeat">Пароль:</form:label>
-                                    <form:input path="signup-password-repeat" type="password" name="signup-password-repeat"/>
-                                    <form:label path="signup-birthday">Дата рождения:</form:label><br>
-                                    <form:input path="signup-birthday" type="date" name="signup-birthday"/><br>
-                                    <form:label path="signup-sex">Пол:</form:label>
-                                    <form:select cssClass="select2" path="signup-sex">
+                                <form:form class="sa-innate-form" method="post" action="/signup" modelAttribute="userForm">
+                                    <form:label path="email">Email:</form:label>
+                                    <form:input path="email" type="text" name="email"/>
+                                    <form:label path="login">Логин:</form:label>
+                                    <form:input path="login" type="text" name="login"/>
+                                    <form:label path="password">Пароль:</form:label>
+                                    <form:input path="password" type="password" name="password"/>
+                                    <form:label path="repeatPassword">Пароль:</form:label>
+                                    <form:input path="repeatPassword" type="password" name="password-repeat"/>
+                                    <form:label path="birthday">Дата рождения:</form:label><br>
+                                    <form:input path="birthday" type="date" name="birthday"/><br>
+                                    <form:label path="sex">Пол:</form:label>
+                                    <form:select cssClass="select2" path="sex">
                                         <form:option value="1">Женский</form:option>
                                         <form:option value="0">Мужской</form:option>
                                     </form:select>

@@ -23,7 +23,7 @@ public interface TestService {
 
     TestDto getTest(String name);
 
-    List<TestDto> getAll(User user);
+    List<TestDto> getAll();
 
     List<TestDto> getAllPassed(User user);
 

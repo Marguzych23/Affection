@@ -110,8 +110,8 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public List<TestDto> getAll(User user) {
-        return convertTestListToDtoList(testRepository.findAllByUserId(user.getId()), null);
+    public List<TestDto> getAll() {
+        return convertTestListToDtoList(testRepository.findAll(), null);
     }
 
     @Override

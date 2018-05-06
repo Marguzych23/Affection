@@ -113,7 +113,7 @@
 
             <div class="row auth-form">
                 <form:form method="post" cssClass="col-md-12 user required-fields" id="user-form"
-                           action="/profile">
+                           action="/profile" modelAttribute="userForm">
 
                     <div class="row">
 

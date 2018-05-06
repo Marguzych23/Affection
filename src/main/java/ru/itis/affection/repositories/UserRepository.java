@@ -11,21 +11,15 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User save(User user);
-
-    List<User> findAll();
-
     User findById(Long id);
 
     User findByLogin(String login);
 
-    void delete(Long id);
-
-    @Modifying
-    @Query(value = "UPDATE users SET user_login = :login, user_email = :email, user_password = :password, " +
-            "user_birthday = :birthday, user_sex = :sex WHERE user_id = :id",
-            nativeQuery = true)
-    void update(User user);
+//    @Modifying
+//    @Query(value = "UPDATE users SET user_login = :login, user_email = :email, user_password = :password, " +
+//            "user_birthday = :birthday, user_sex = :sex WHERE user_id = :id",
+//            nativeQuery = true)
+//    void update(User user);
 
 
 }

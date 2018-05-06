@@ -1,6 +1,7 @@
 package ru.itis.affection.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.itis.affection.dto.TestDto;
 import ru.itis.affection.models.User;
+import ru.itis.affection.security.details.UserDetailsImpl;
 import ru.itis.affection.services.TestService;
 
 import javax.servlet.http.HttpSession;
@@ -23,16 +25,18 @@ public class TestsController {
 
     @GetMapping
     public String index(
-            HttpSession httpSession,
-            @RequestParam(name = "sort") String sortBy,
-            ModelMap modelMap) {
-        User user = (User) httpSession.getAttribute("user");
+            @RequestParam(name = "sort", required = false) String sortBy,
+            ModelMap modelMap,
+            Authentication authentication) {
+
+        UserDetailsImpl details = ((UserDetailsImpl) authentication.getDetails());
+        User user = details.getUser();
 
         List<TestDto> testDtoList = null;
         String testType = null;
 
         if (sortBy == null || sortBy.isEmpty()) {
-            testDtoList = testService.getAll(user);
+            testDtoList = testService.getAll();
         } else if (sortBy.equals("passed")) {
             testType = "passed";
             testDtoList = testService.getAllPassed(user);

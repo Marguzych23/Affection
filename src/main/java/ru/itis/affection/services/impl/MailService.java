@@ -38,18 +38,12 @@ public class MailService {
 
             public void prepare(MimeMessage mimeMessage) throws Exception {
                 MimeMessageHelper message = new MimeMessageHelper(mimeMessage, "UTF-8");
-//                String link = "http://localhost:4949/signup/accept?email=" + account.getEmail();
-//                String text =
-//                        String.format("Thanks for signing up ! You must follow this link to activate your account: \n <a href=\"%s\">%s</a>", link);
-////                message.setFrom("support@ezyShop.com");
-////                message.addTo(account.getEmail());
-////                message.setSubject("Confirm account on EzY Shop");
-////                message.setText(text);
-//                mimeMessage.setFrom("zaynullin.emil@gmail.com");
-//                mimeMessage.setRecipient(Message.RecipientType.TO,
-//                        new InternetAddress(account.getEmail()));
-//                mimeMessage.setText(text, "UTF-8");
-//                mimeMessage.setSubject("Confirm account on EzY Shop");
+                String text = "Thanks for signing up !";
+                mimeMessage.setFrom("zaynullin.emil@gmail.com");
+                mimeMessage.setRecipient(Message.RecipientType.TO,
+                        new InternetAddress(account.getEmail()));
+                mimeMessage.setText(text, "UTF-8");
+                mimeMessage.setSubject("Confirm account on EzY Shop");
             }
         };
         return preparator;

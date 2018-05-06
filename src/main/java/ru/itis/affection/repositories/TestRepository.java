@@ -43,7 +43,7 @@ public interface TestRepository extends JpaRepository<Test, Long> {
     List<Test> findAllByUserId(@Param("user_id") Long userId);
 
     @Query(value = "SELECT DISTINCT * FROM test AS t " +
-            "LEFT JOIN (SELECT * FROM user_test WHERE user_id = :user_id AND user_test_percent = NULL) AS ut ON t.test_id = ut.test_id;",
+            "LEFT JOIN (SELECT * FROM user_test WHERE user_id = :user_id AND user_test_percent ISNULL) AS ut ON t.test_id = ut.test_id;",
             nativeQuery = true)
     List<Test> findAllNotStartedByUserId(@Param("user_id") Long userId);
 
