@@ -60,7 +60,7 @@ public class IndexController {
 
         if (!userService.getAll().contains(user)) {
             mailService.sendEmail(user);
-//            UserDetails details = (UserDetails) authentication.getDetails();
+            UserDetails details = (UserDetails) authentication.getDetails();
 
             return "redirect:/tests";
         }
