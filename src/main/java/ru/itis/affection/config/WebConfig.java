@@ -11,8 +11,11 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Locale;
+import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
@@ -35,7 +38,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/home").setViewName("welcome");
         registry.addViewController("/tests").setViewName("tests");
         registry.addViewController("/test").setViewName("test");
-        registry.addViewController("/").setViewName("welcome");
 //        registry.addViewController("/error").setViewName("/exceptions/exceptionViewWithInfo");
     }
 
@@ -75,5 +77,24 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(localeInterceptor());
     }
 
+    @Bean
+    public JavaMailSender getMailSender(){
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+
+        //Using gmail
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+        mailSender.setUsername("zaynullin.emil@gmail.com");
+        mailSender.setPassword("emil1998");
+
+        Properties javaMailProperties = new Properties();
+        javaMailProperties.put("mail.smtp.starttls.enable", "true");
+        javaMailProperties.put("mail.smtp.auth", "true");
+        javaMailProperties.put("mail.transport.protocol", "smtp");
+        javaMailProperties.put("mail.debug", "true");//Prints out everything on screen
+
+        mailSender.setJavaMailProperties(javaMailProperties);
+        return mailSender;
+    }
 }
 
