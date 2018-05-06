@@ -1,6 +1,5 @@
 package ru.itis.affection.services.impl;
 
-import entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
